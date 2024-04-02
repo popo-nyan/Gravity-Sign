@@ -21,7 +21,6 @@ if __name__ == "__main__":
               'sys_lang': 'en',
               'uwd': '4VkXmI0uyVZf+NUif65g9XFC8QvAqCwK+MAD8C4T1wmHDqjCwHCIJi4Ovxwu8l3F\n',
               'app_version': '9.4.1',
-              'sign': '5f930a8ea0bc4eabb39156861e5ceab8',
               'sim_country': 'JP',
               'source': '',
               'pkg': 'anonymous.sns.community.gravity',
@@ -39,7 +38,6 @@ if __name__ == "__main__":
               'user_country': 'JP',
               'idfa': 'E7QQ1LGfLcP8Iu7g0REBEss6MLJs09oLGGiPBbHbWnR4gJhiiFDzCnUvfiyXOCOJ\n',
               'session_id': 'E44E0E27-1DE2-5E08-805B-BBA3963293B0',
-              'token': 'csLIz5dNJx6awtonYBEwdgunXeKfXXP0%2BtF97hyiseux5xj62KnjDYL%2B4oYNVVeB',
               'referrer': 'default',
               'device': 'android',
               'ts': '1712067947'}
