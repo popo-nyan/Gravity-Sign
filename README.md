@@ -6,3 +6,7 @@ Gravityでは、**sign**と呼ばれるHTTP署名を使用しています。
 # 注意
 リクエストする際には、**t_secret**を消してください。
 check_install参照
+
+# 連絡先
+- Email [kounomiya@tuta.io](mailto:kounomiya@tuta.io)
+- Matrix: [@kounomiya:hackliberty.org](https://matrix.to/#/@kounomiya:hackliberty.org)
