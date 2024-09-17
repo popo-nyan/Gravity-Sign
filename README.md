@@ -5,7 +5,7 @@ Gravityでは、**sign**と呼ばれるHTTP署名を使用しています。
 
 # 注意
 リクエストする際には、**t_secret**を消してください。  
-[check_install.py](https://github.com/popo-nyan/Gravity-Sign/blob/master/sign.py)参照
+[check_install.py](https://github.com/popo-nyan/Gravity-Sign/blob/master/check_install.py)参照
 
 # 連絡先
 - Email [kounomiya@tuta.io](mailto:kounomiya@tuta.io)
