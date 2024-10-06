@@ -1,4 +1,6 @@
+import httpx
 import hashlib
+from time import time
 
 T_SECRET = 26714187
 
@@ -38,13 +40,20 @@ def main():
         'model': 'Pixel_5a',
         'device': 'android',
         'brand': 'Genymobile',
-        'ts': '1728187050',
+        'ts': str(int(time())),
     }
     api_secret = generate_api_secret(params["ts"])
     params["api_security"] = api_secret
     sign = calculate_sign(params)
-    print(sign)
+    params["sign"] = sign
+    params.pop("api_security")
+    response = httpx.get('https://api.gravity.place/gravity/common/getimpornword', params=params, headers={
+        'Host': 'api.gravity.place',
+        'User-Agent': 'okhttp/3.12.13',
+    })
+    print(response.json())
+    print(response.status_code)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
