@@ -5,7 +5,7 @@ Gravityでは、**sign**と呼ばれるHTTP署名を使用しています。
 
 # 注意
 リクエストする際には、**api_security**を消してください。  
-[check_install.py](https://github.com/popo-nyan/Gravity-Sign/blob/master/get_impornword.py)参照
+[get_impornword.py](https://github.com/popo-nyan/Gravity-Sign/blob/master/get_impornword.py)参照
 
 # 連絡先
 - Email [kounomiya@tuta.io](mailto:kounomiya@tuta.io)
