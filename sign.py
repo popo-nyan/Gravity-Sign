@@ -9,7 +9,6 @@ def generate_api_secret(timestamp: str) -> str:
 
 def calculate_sign(payload: dict) -> str:
     payload.pop("sign") if payload.get("sign") is not None else ""
-    timestamp = int(payload.get("ts"))
     text = ""
     for key, value in sorted(zip(payload.keys(), payload.values())):
         text += key + "=" + value
