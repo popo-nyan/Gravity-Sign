@@ -1,8 +1,21 @@
+from pprint import pprint
+
 import httpx
-import hashlib
 from time import time
+from uuid import uuid4
+from hashlib import md5
+from base64 import b64encode
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
 
 T_SECRET = 26714187
+KEY = "baisimeji9262019"
+IV = "qrstuvwxyz123456"
+
+
+def encrypt(plain_text: str) -> str:
+    return b64encode(AES.new(key=KEY.encode(), iv=IV.encode(), mode=AES.MODE_CBC).encrypt(
+        pad(data_to_pad=plain_text.encode(), block_size=AES.block_size))).decode()
 
 
 def generate_api_secret(timestamp: str) -> str:
@@ -14,23 +27,22 @@ def calculate_sign(payload: dict) -> str:
     text = ""
     for key, value in sorted(zip(payload.keys(), payload.values())):
         text += key + "=" + value
-    return hashlib.md5(text.encode()).hexdigest()
+    return md5(text.encode()).hexdigest()
 
 
 def main():
-    params = {
+    data = {
         'country': 'US',
         'product': 'gravity',
         'sys_lang': 'en',
-        'uwd': '++CUaf/+JFP9R8FEnXvxOdLms6MEaA19jQ1m3JhZm+Wp1K1aM8ODclP60pMUw1wJ',
+        'uwd': encrypt(str(uuid4()).upper()),
         'app_version': '10.7.1',
         'user_country': '',
         'idfa': 'juOwtzKZsQHwMov+aUW9MQ==',
-        'sign': '99c544a90ebf0c10341546f93a4e589d',
         'sim_country': 'us',
         'pkg': 'anonymous.sns.community.gravity',
         'languageV2': 'en',
-        'referrer': 'Organic',
+        'referrer': 'default',
         'operator_name': 'Android',
         'app_version_code': '451',
         'zone': '0',
@@ -38,20 +50,21 @@ def main():
         'sdk_version': '30',
         'model': 'Pixel_5a',
         'device': 'android',
-        'brand': 'Genymobile',
+        'brand': 'Google',
         'ts': str(int(time())),
     }
-    api_secret = generate_api_secret(params["ts"])
-    params["api_security"] = api_secret
-    sign = calculate_sign(params)
-    params["sign"] = sign
-    params.pop("api_security")
-    response = httpx.get('https://api.gravity.place/gravity/common/getimpornword', params=params, headers={
+
+    api_secret = generate_api_secret(data["ts"])
+    data["api_security"] = api_secret
+    sign = calculate_sign(data)
+    data["sign"] = sign
+    data.pop("api_security")
+    pprint(data)
+    response = httpx.post('https://api.gravity.place/gravity/user/checkInstall', params=data, headers={
         'Host': 'api.gravity.place',
         'User-Agent': 'okhttp/3.12.13',
     })
-    print(response.json())
-    print(response.status_code)
+    print(response.status_code, response.json())
 
 
 if __name__ == "__main__":
