@@ -9,4 +9,3 @@ Gravityでは、**sign**と呼ばれるHTTP署名を使用しています。
 
 # 連絡先
 - Email [kounomiya@tuta.io](mailto:kounomiya@tuta.io)
-- Matrix: [@kounomiya:hackliberty.org](https://matrix.to/#/@kounomiya:hackliberty.org)
